@@ -9,13 +9,14 @@ margin: auto;
 }
 .btn {
     font: inherit;
+    width: 23%;
     padding: 0.5rem 1.5rem;
     cursor: pointer;
     border-radius: 4px;
     background-color: #800040;
     color: white;
     border: 1px solid #800040;
-    margin: 0.1em;
+    margin: 0.25%;
   }
   
   .btn:hover {
@@ -30,6 +31,9 @@ margin: auto;
     width: 50%;
     margin: auto;
     text-align: center;
+  }
+  table{
+    width: 100%;
   }
   .input{
     margin-bottom: 0.2em;
@@ -49,6 +53,4 @@ margin: auto;
       background-color: whitesmoke;
     }
   }
-  table{
-    width: 100%;
-  }
+  

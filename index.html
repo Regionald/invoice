@@ -13,9 +13,9 @@
 
 
     <button class="btn homebtn">Home</button>
-    <button class="btn aboutbtn">Invoice</button>
-    <button class="btn contactbtn">Customers</button>
-    <button class="btn contactbtn">Cash flow</button>
+    <button class="btn invoicebtn">Invoice</button>
+    <button class="btn customersbtn">Customers</button>
+    <button class="btn cashflowbtn">Cash flow</button>
 
 
 
@@ -45,9 +45,10 @@
             </table>
 
             <div class="controls">
-                <a href="#" id="addMore">Add more</a>
-                <a href="#" id="removeFields">Remove Field</a>
-    
+                <a href="#" id="addMore">
+                    <b>Add item +</b></a>
+                <a href="#" id="removeFields"> <b>Remove item -</b> </a>
+     
             </div>
 
         </div>
@@ -64,8 +65,10 @@
                 <br>
                 <input type="number" placeholder="days before due date">
                 <br>
-                <input type="radio" name="typeOFinvoice" value="Tax invoice" placeholder="Tax invoice">
-                <input type="radio" name="typeOFinvoice" value="invoice">
+                <label for="taxIvoice">Tax invoice</label>
+                <input type="radio" id="taxIvoice" name="typeOFinvoice" value="Tax invoice" placeholder="Tax invoice">
+                <label for="invoice">invoice</label>
+                <input type="radio" id="invoice" name="typeOFinvoice" value="invoice">
 
                 <br>
                 <button>create invoice</button>
@@ -78,54 +81,76 @@
 
 
     <br>
-    <div class="card about">
-        <h1><b>about us</b></h1>
+    <div class="card invoice">
+        <h1><b>invoice</b></h1>
     </div>
     <br>
-    <div class="card contact">
-        <h1><b>Send email</b></h1>
+    <div class="card customers">
+        <h1><b>customers</b></h1>
+        <h6>Sign in with your Google Account</h6>
+    </div>
+    <div class="card cashflow">
+        <h1><b>cashflow</b></h1>
         <h6>Sign in with your Google Account</h6>
     </div>
     <script>
 
-        const homeElem = document.querySelector(".homebtn");
-        const aboutElem = document.querySelector(".aboutbtn");
-        const contactElem = document.querySelector(".contactbtn");
+        const homeElem = document.querySelector(".home");
+        const invoiceElem = document.querySelector(".invoice");
+        const customersElem = document.querySelector(".customers");
+        const cashflowElem = document.querySelector(".cashflow");
 
-        const home = document.querySelector(".home");
-        const about = document.querySelector(".about");
-        const contact = document.querySelector(".contact");
 
-        contact.classList.add("hide");
-        about.classList.add("hide");
+        const homeBtn = document.querySelector(".homebtn");
+        const invoicebtn = document.querySelector(".invoicebtn");
+        const customersbtn= document.querySelector(".customersbtn");
+        const cashflowbtn= document.querySelector(".cashflowbtn");
+
+
+        invoiceElem.classList.add("hide");
+        customersElem.classList.add("hide");
+        cashflowElem.classList.add("hide");
+
 
 
         function homeSelector() {
 
-            about.classList.add("hide");
-            contact.classList.add("hide");
-            home.classList.remove("hide");
+            invoiceElem.classList.add("hide");
+            customersElem.classList.add("hide");
+             cashflowElem.classList.add("hide");
+            homeElem.classList.remove("hide");
 
         };
 
-        function aboutSelector() {
+        function invoiceSelector() {
 
-            home.classList.add("hide");
-            contact.classList.add("hide");
-            about.classList.remove("hide");
+            invoiceElem.classList.remove("hide");
+            customersElem.classList.add("hide");
+             cashflowElem.classList.add("hide");
+            homeElem.classList.add("hide");    
 
         };
 
-        function contactSelector() {
+        function customersSelector() {
 
-            about.classList.add("hide");
-            home.classList.add("hide");
-            contact.classList.remove("hide");
+            invoiceElem.classList.add("hide");
+            customersElem.classList.remove("hide");
+             cashflowElem.classList.add("hide");
+            homeElem.classList.add("hide");
         };
 
-        homeElem.addEventListener('click', homeSelector);
-        aboutElem.addEventListener('click', aboutSelector);
-        contactElem.addEventListener('click', contactSelector);
+        function cashflowSelector() {
+
+             invoiceElem.classList.add("hide");
+             customersElem.classList.add("hide");
+             cashflowElem.classList.remove("hide");
+             homeElem.classList.add("hide");
+        };
+
+        homeBtn.addEventListener('click', homeSelector);
+        invoicebtn.addEventListener('click', invoiceSelector);
+        customersbtn.addEventListener('click', customersSelector);
+        cashflowbtn.addEventListener('click', cashflowSelector);
 
 
     </script>
