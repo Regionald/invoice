@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>smartInvoice</title>
+</head>
+
+<body>
+
+
+    <button class="btn homebtn">Home</button>
+    <button class="btn aboutbtn">About Us</button>
+    <button class="btn contactbtn">Contact Us</button>
+
+
+    </div>
+    <hr>
+    <h1 style="text-align: center;">SmartInvoice</h1>
+    <br>
+    <div class="card home">
+        <h1><b>Hello there!</b></h1>
+        <h6>Sign in with your Google Account</h6>
+        <form action="login" method="post">
+            <input type="email" placeholder="sign in with Google Account" class="input">
+            <br>
+            <input type="password" placeholder="Google Account Password" class="input">
+            <br>
+            <br>
+            <input type="submit">
+
+        </form>
+    </div>
+
+    <br>
+    <div class="card about">
+        <h1><b>about us</b></h1>
+    </div>
+    <br>
+    <div class="card contact">
+        <h1><b>Send email</b></h1>
+        <h6>Sign in with your Google Account</h6>
+    </div>
+    <script>
+
+        const homeElem = document.querySelector(".homebtn");
+        const aboutElem = document.querySelector(".aboutbtn");
+        const contactElem = document.querySelector(".contactbtn");
+
+        const home = document.querySelector(".home");
+        const about = document.querySelector(".about");
+        const contact = document.querySelector(".contact");
+
+        contact.classList.add("hide");
+        about.classList.add("hide");
+
+
+        function homeSelector() {
+            
+            about.classList.add("hide");
+            contact.classList.add("hide");
+            home.classList.remove("hide");
+
+        };
+
+        function aboutSelector() {
+
+            home.classList.add("hide");
+            contact.classList.add("hide");
+            about.classList.remove("hide");
+
+        };
+
+        function contactSelector() {
+
+            about.classList.add("hide");
+            home.classList.add("hide");
+            contact.classList.remove("hide");
+        };
+
+        homeElem.addEventListener('click', homeSelector);
+        aboutElem.addEventListener('click', aboutSelector);
+        contactElem.addEventListener('click', contactSelector);
+
+
+    </script>
+
+
+
+</body>
+
+</html>

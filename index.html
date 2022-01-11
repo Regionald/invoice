@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>smartInvoice</title>
+</head>
+
+<body>
+
+
+    <button class="btn homebtn">Home</button>
+    <button class="btn aboutbtn">Invoice</button>
+    <button class="btn contactbtn">Customers</button>
+    <button class="btn contactbtn">Cash flow</button>
+
+
+
+    </div>
+    <hr>
+    <form action="invoice" method="get">
+        <div class="card home">
+            <h3><b>products and services</b></h3>
+            <table>
+                <tr>
+                    <th>DESCRIPTION</th>
+                    <th>RATE</th>
+                    <th>QTY</th>
+                </tr>
+                <tr>
+                    <td id="discript">
+                        <input type="text" name="descript" placeholder="description">
+
+                    </td>
+                    <td id="rate">
+                        <input type="number" name="rate" placeholder="rate per Item in R">
+                    </td>
+                    <td id="qty">
+                        <input type="number" name="qty" placeholder="quanty">
+                    </td>
+                </tr>
+            </table>
+
+            <div class="controls">
+                <a href="#" id="addMore">Add more</a>
+                <a href="#" id="removeFields">Remove Field</a>
+    
+            </div>
+
+        </div>
+        <br>
+        
+            <div class="card home">
+                <h3><b>bill to</b></h3>
+
+                <input type="text" placeholder="Name" name="name">
+                <br>
+                <input type="text" placeholder="address" name="address">
+                <br>
+                <input type="number" placeholder="code" name="code">
+                <br>
+                <input type="number" placeholder="days before due date">
+                <br>
+                <input type="radio" name="typeOFinvoice" value="Tax invoice" placeholder="Tax invoice">
+                <input type="radio" name="typeOFinvoice" value="invoice">
+
+                <br>
+                <button>create invoice</button>
+
+    </form>
+
+    </div>
+
+    </div>
+
+
+    <br>
+    <div class="card about">
+        <h1><b>about us</b></h1>
+    </div>
+    <br>
+    <div class="card contact">
+        <h1><b>Send email</b></h1>
+        <h6>Sign in with your Google Account</h6>
+    </div>
+    <script>
+
+        const homeElem = document.querySelector(".homebtn");
+        const aboutElem = document.querySelector(".aboutbtn");
+        const contactElem = document.querySelector(".contactbtn");
+
+        const home = document.querySelector(".home");
+        const about = document.querySelector(".about");
+        const contact = document.querySelector(".contact");
+
+        contact.classList.add("hide");
+        about.classList.add("hide");
+
+
+        function homeSelector() {
+
+            about.classList.add("hide");
+            contact.classList.add("hide");
+            home.classList.remove("hide");
+
+        };
+
+        function aboutSelector() {
+
+            home.classList.add("hide");
+            contact.classList.add("hide");
+            about.classList.remove("hide");
+
+        };
+
+        function contactSelector() {
+
+            about.classList.add("hide");
+            home.classList.add("hide");
+            contact.classList.remove("hide");
+        };
+
+        homeElem.addEventListener('click', homeSelector);
+        aboutElem.addEventListener('click', aboutSelector);
+        contactElem.addEventListener('click', contactSelector);
+
+
+    </script>
+
+    <script>
+        const discript = document.getElementById('discript');
+        const rate = document.getElementById('rate');
+        const qty = document.getElementById('qty');
+        const addMore = document.getElementById('addMore');
+        const removeFields = document.getElementById('removeFields');
+
+        addMore.onclick = function () {
+            const newDescript = document.createElement('input');
+
+            newDescript.setAttribute('type', 'text');
+            newDescript.setAttribute('name', 'descript');
+            newDescript.setAttribute('placeholder','description')
+            discript.appendChild(newDescript);
+
+            const newRate = document.createElement('input');
+            newRate.setAttribute('type', 'number');
+            newRate.setAttribute('name', 'rate');
+            newRate.setAttribute('placeholder', 'rate per Item in R');
+            rate.appendChild(newRate);
+
+            const newQty = document.createElement('input');
+            newQty.setAttribute('type', 'number');
+            newQty.setAttribute('name', 'qty');
+            newQty.setAttribute('placeholder', 'quanty');
+            qty.appendChild(newQty);
+
+        };
+
+        removeFields.onclick=function(){
+
+            const discriptTag=discript.getElementsByTagName('input');
+            const qtyTag=qty.getElementsByTagName('input');
+            const rateTag=rate.getElementsByTagName('input');
+
+            if(discriptTag.length>1){
+                discript.removeChild(discriptTag[(discriptTag.length)-1]);
+                rate.removeChild(rateTag[(rateTag.length)-1]);
+                qty.removeChild(qtyTag[(qtyTag.length)-1]);
+            };
+        }
+            
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
