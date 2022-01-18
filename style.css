@@ -2,6 +2,7 @@ body{
 
 max-width: 100%;
 margin: auto;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 h1,h2,h3,h4,h5,h6,p{
   color: #000000;
@@ -32,9 +33,11 @@ h1,h2,h3,h4,h5,h6,p{
     margin: 1%;
     }
     input:focus{
-        background-color: aqua;
+        background-color:lightblue;
     
     }
+    
+
 hr{
     background-color: red;
   }
