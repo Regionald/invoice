@@ -6,22 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="invoice.css">
     <title>smartInvoice</title>
+    <script src="jsPDF.js"></script>
+    <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    <script src="downloadPDF.js"></script>
 </head>
 
 <body>
 
-
-    <button class="btn homebtn">Home</button>
-    <button class="btn invoicebtn">Invoice</button>
-    <button class="btn customersbtn">Customers</button>
-    <button class="btn cashflowbtn">Cash flow</button>
-
-
-
+    <div class="navigator">
+        <button class="btn homebtn">Home</button>
+        <button class="btn invoicebtn">Invoice</button>
+        <button class="btn customersbtn">Customers</button>
+        <button class="btn cashflowbtn">Cash flow</button>
     </div>
     <hr>
     <form action="invoice" method="get">
+
         <div class="card home">
             <h3><b>products and services</b></h3>
             <table>
@@ -48,63 +50,171 @@
                 <a href="#" id="addMore">
                     <b>Add item +</b></a>
                 <a href="#" id="removeFields"> <b>Remove item -</b> </a>
-     
+
             </div>
 
+
+            <hr>
+
+
+            <h3><b>bill to</b></h3>
+
+            <input type="text" placeholder="Name" name="name">
+            <br>
+            <input type="text" placeholder="address" name="address">
+            <br>
+            <input type="number" placeholder="code" name="code">
+            <br>
+            <input type="number" placeholder="days before due date">
+            <br>
+            <label for="taxIvoice">Tax invoice</label>
+            <input type="radio" id="taxIvoice" name="typeOFinvoice" value="Tax invoice" placeholder="Tax invoice">
+            <label for="invoice">invoice</label>
+            <input type="radio" id="invoice" name="typeOFinvoice" value="invoice">
+
+            <br>
+            <button>create invoice</button>
         </div>
-        <br>
-        
-            <div class="card home">
-                <h3><b>bill to</b></h3>
 
-                <input type="text" placeholder="Name" name="name">
-                <br>
-                <input type="text" placeholder="address" name="address">
-                <br>
-                <input type="number" placeholder="code" name="code">
-                <br>
-                <input type="number" placeholder="days before due date">
-                <br>
-                <label for="taxIvoice">Tax invoice</label>
-                <input type="radio" id="taxIvoice" name="typeOFinvoice" value="Tax invoice" placeholder="Tax invoice">
-                <label for="invoice">invoice</label>
-                <input type="radio" id="invoice" name="typeOFinvoice" value="invoice">
-
-                <br>
-                <button>create invoice</button>
 
     </form>
 
-    </div>
-
-    </div>
-
-
     <br>
-    <div class="card invoice">
-        <h1><b>invoice</b></h1>
+    <div class="invoices">
+
+
+        <div class="invoice" id="1">
+
+            <div class="box">
+                <div class="right">
+                    <b>University of Johannesburg</b>
+                    <p>210 Maxixini</p>
+                    <p>Acornhoek</p>
+                    <p>1360</p>
+                </div>
+                <div class="left">
+                    <b>Invoice</b><br>
+                    <br>
+                    <img src="images.png" alt="pic" class="picture">
+                </div>
+            </div>
+            <hr>
+
+            <div class="box">
+                <div class="right">
+                    <p>bill to :</p>
+                    <b>University of Johannesburg</b>
+                    <p>210 Maxixini</p>
+                    <p>Acornhoek</p>
+                    <p>1360</p>
+                </div>
+                <div class="left" style="text-align: right;">
+                    <b>Invoice Id:inv-001</b><br>
+                    <h6>Date:13/06/2022</h6>
+                    <h6>Account number:1541048928</h6>
+                    <b>Due Date:19/06/2022</b><br>
+
+                </div>
+            </div>
+            <hr>
+            <div class="box">
+                <table>
+                    <tr>
+                        <th>DESCRIPTION</th>
+                        <th>RATE</th>
+                        <th>QTY</th>
+                        <th>AMOUNT</th>
+                    </tr>
+                    <tr>
+                        <td>50 kg cement</th>
+                        <td>R95</th>
+                        <td>4</th>
+                        <td>R380</th>
+                    </tr>
+                    <tr>
+                        <td>50 kg cement</th>
+                        <td>R95</th>
+                        <td>4</th>
+                        <td>R380</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            </th>
+                        <td>
+                            </th>
+                        <td>sub total</th>
+                        <td>R646</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            </th>
+                        <td>
+                            </th>
+                        <td>vat @ 15%</th>
+                        <td>R114</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            </th>
+                        <td>
+                            </th>
+                        <td>TOTAL</th>
+                        <td>760</th>
+                    </tr>
+                </table>
+            </div>
+            <hr>
+            <div class="box">
+                <div class="contact">
+                    <b>Thank you for your Business</b>
+                    <h6>0676527884|regionaldmongwe@gmail.com|SMEs.com</h6>
+                    <a href="#">invoice powered by TR-invoice</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="action">
+            <button value="1" onclick="downloadPDF(this.value)">save pdf</button>
+            <button>save docx</button>
+            <button>save csv</button>
+
+        </div>
+
+
     </div>
     <br>
     <div class="card customers">
         <h1><b>customers</b></h1>
         <h6>Sign in with your Google Account</h6>
     </div>
+
     <div class="card cashflow">
         <h1><b>cashflow</b></h1>
         <h6>Sign in with your Google Account</h6>
     </div>
+    <hr>
+    <div class="foot">
+
+
+        <h3>The smart Invoice</h3>
+        <h6><a href="#">Disclaimer</a>|<a href="#">Privacy police</a>|<a href="#">Reports</a>|<a href="#">News</a>|<a
+                href="#">Contact us</a>|<a href="#">About Us</a></h6>
+        <h6>© 2022-2022 TR-invoice. All rights reserved. Version: 1.0.0</h6>
+        <br>
+
+    </div>
     <script>
 
         const homeElem = document.querySelector(".home");
-        const invoiceElem = document.querySelector(".invoice");
+        const invoiceElem = document.querySelector(".invoices");
         const customersElem = document.querySelector(".customers");
         const cashflowElem = document.querySelector(".cashflow");
 
 
         const homeBtn = document.querySelector(".homebtn");
         const invoicebtn = document.querySelector(".invoicebtn");
-        const customersbtn= document.querySelector(".customersbtn");
-        const cashflowbtn= document.querySelector(".cashflowbtn");
+        const customersbtn = document.querySelector(".customersbtn");
+        const cashflowbtn = document.querySelector(".cashflowbtn");
 
 
         invoiceElem.classList.add("hide");
@@ -117,7 +227,7 @@
 
             invoiceElem.classList.add("hide");
             customersElem.classList.add("hide");
-             cashflowElem.classList.add("hide");
+            cashflowElem.classList.add("hide");
             homeElem.classList.remove("hide");
 
         };
@@ -126,8 +236,8 @@
 
             invoiceElem.classList.remove("hide");
             customersElem.classList.add("hide");
-             cashflowElem.classList.add("hide");
-            homeElem.classList.add("hide");    
+            cashflowElem.classList.add("hide");
+            homeElem.classList.add("hide");
 
         };
 
@@ -135,16 +245,16 @@
 
             invoiceElem.classList.add("hide");
             customersElem.classList.remove("hide");
-             cashflowElem.classList.add("hide");
+            cashflowElem.classList.add("hide");
             homeElem.classList.add("hide");
         };
 
         function cashflowSelector() {
 
-             invoiceElem.classList.add("hide");
-             customersElem.classList.add("hide");
-             cashflowElem.classList.remove("hide");
-             homeElem.classList.add("hide");
+            invoiceElem.classList.add("hide");
+            customersElem.classList.add("hide");
+            cashflowElem.classList.remove("hide");
+            homeElem.classList.add("hide");
         };
 
         homeBtn.addEventListener('click', homeSelector);
@@ -154,7 +264,6 @@
 
 
     </script>
-
     <script>
         const discript = document.getElementById('discript');
         const rate = document.getElementById('rate');
@@ -167,7 +276,7 @@
 
             newDescript.setAttribute('type', 'text');
             newDescript.setAttribute('name', 'descript');
-            newDescript.setAttribute('placeholder','description')
+            newDescript.setAttribute('placeholder', 'description')
             discript.appendChild(newDescript);
 
             const newRate = document.createElement('input');
@@ -184,26 +293,21 @@
 
         };
 
-        removeFields.onclick=function(){
+        removeFields.onclick = function () {
 
-            const discriptTag=discript.getElementsByTagName('input');
-            const qtyTag=qty.getElementsByTagName('input');
-            const rateTag=rate.getElementsByTagName('input');
+            const discriptTag = discript.getElementsByTagName('input');
+            const qtyTag = qty.getElementsByTagName('input');
+            const rateTag = rate.getElementsByTagName('input');
 
-            if(discriptTag.length>1){
-                discript.removeChild(discriptTag[(discriptTag.length)-1]);
-                rate.removeChild(rateTag[(rateTag.length)-1]);
-                qty.removeChild(qtyTag[(qtyTag.length)-1]);
+            if (discriptTag.length > 1) {
+                discript.removeChild(discriptTag[(discriptTag.length) - 1]);
+                rate.removeChild(rateTag[(rateTag.length) - 1]);
+                qty.removeChild(qtyTag[(qtyTag.length) - 1]);
             };
         }
-            
-
 
 
     </script>
-
-
-
 </body>
 
 </html>

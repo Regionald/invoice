@@ -27,8 +27,10 @@
         <form action="login" method="post">
             <input type="email" placeholder="sign in with Google Account" class="input">
             <br>
-            <input type="password" placeholder="Google Account Password" class="input">
+            <input type="password" placeholder="Google Account Password" class="input" id="password">
             <br>
+            <input type="checkbox" onclick="showPassword()">Show Password
+
             <br>
             <input type="submit">
 
@@ -38,17 +40,75 @@
     <br>
     <div class="card about">
         <h1><b>about us</b></h1>
+        <br>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet urna vel felis volutpat
+            pharetra. Vivamus volutpat eget elit nec pellentesque. Nam tristique tortor vitae lectus volutpat,
+            sed pellentesque massa semper. Sed pellentesque leo massa, vitae fermentum ipsum semper quis. Duis
+            nunc velit, eleifend eu sollicitudin ac, gravida quis ex. Aenean nec tristique diam, mattis interdum
+            odio. Nam mattis mauris metus, ut tristique nunc sollicitudin in. Sed a orci eu ipsum viverra dapibus.
+            Praesent id convallis leo. Mauris non porta nibh. Phasellus efficitur aliquet risus nec feugiat.
+            <br>
+            Proin placerat, lorem id rhoncus dapibus, eros urna sagittis ipsum, egestas tristique sem tortor nec mi.
+            Fusce at metus quis eros varius rhoncus. Aliquam vehicula semper sapien, vel varius nibh fermentum nec.
+            In aliquam congue ipsum, at placerat turpis suscipit in. Aenean eget arcu ut nisl gravida congue.
+            Pellentesque vel felis quis elit blandit convallis. Praesent ut tempus dolor. Donec eu dolor in sapien
+            imperdiet accumsan in vel odio. Morbi nulla magna, elementum vitae urna sit amet, pulvinar accumsan
+            magna. Etiam quis vulputate mi.
+            <br>
+            <br>
+            Praesent vitae tortor tincidunt, congue diam nec, fringilla lectus. Suspendisse blandit libero sem, in
+            varius sapien porttitor in. Cras porta accumsan dignissim. Nulla risus mi, maximus eu varius vitae,
+            euismod sed nulla. Maecenas vitae ipsum vitae lectus laoreet fringilla. Praesent sed lacus id urna
+            imperdiet lacinia. Aenean posuere in enim varius posuere. Nulla et metus vel risus porta suscipit
+            vel sit amet leo. Vivamus sit amet nulla nisi. Vestibulum volutpat erat id tellus rhoncus dapibus.
+            Quisque sollicitudin arcu et ligula blandit, vitae molestie mauris vestibulum. Nam venenatis, felis
+            et pellentesque ornare, enim orci sagittis massa, vitae lobortis quam urna sed dui. Phasellus cursus
+            nibh a neque fringilla commodo. Morbi laoreet quam nulla. Quisque vel convallis sem. Nunc finibus ante
+            nulla, vitae lobortis mi luctus vitae.
+            <br>
+            Curabitur vel nisl ac turpis tincidunt aliquet. Curabitur efficitur, odio eget iaculis molestie,
+            ex leo consequat nibh, eu sodales lacus nisi id ante. Ut fermentum iaculis ipsum, consequat vehicula enim
+            pulvinar in. Donec nec odio id felis fermentum molestie in et tortor. Phasellus sed felis vitae nisi
+            consectetur facilisis sed sodales lacus. Mauris sollicitudin nec ex at lobortis. Pellentesque tempor, augue
+            nec interdum posuere, turpis turpis auctor mauris, nec blandit dui orci sed ex. Phasellus accumsan turpis
+            vitae libero vehicula auctor. Nam eget magna volutpat, dictum ante consectetur, pharetra nunc. Ut consequat
+            eleifend est, vel ultrices lacus auctor a. Maecenas dapibus iaculis orci non suscipit. Aliquam at arcu
+            tempor, commodo tellus ac, ullamcorper metus. Nam mattis tincidunt imperdiet.
+        </p>
     </div>
     <br>
     <div class="card contact">
-        <h1><b>Send email</b></h1>
-        <h6>Sign in with your Google Account</h6>
+        <h3>contact Details</h3>
+        <h6>Cnr Kingsway & University Roads</h6>
+        <h6>Auckland Park</h6>
+        <h6>Johannesburg</h6>
+        <h6>Tel:011 559 4555</h6>
+        <h4><b>Send email</b></h4>
+        <form action="/contactUs">
+            <textarea name="emailMessage" id="" cols="30" rows="10"></textarea>
+            <br>
+            <button type="submit">send</button>
+        </form>
     </div>
+    <hr>
+    
+      <div class="foot">
+        <h3>The smart Invoice</h3>
+        <h6><a href="#">Disclaimer</a>|<a href="#">Privacy police</a>|<a href="#">News</a>|<a href="#" id="contactFooter">Contact us</a>|<a
+                href="#" id="aboutFooter">About Us</a></h6>
+        <h6>© 2022-2022 TR-invoice. All rights reserved. Version: 1.0.0</h6>
+        <br>
+    </div>
+
+
+
     <script>
 
         const homeElem = document.querySelector(".homebtn");
         const aboutElem = document.querySelector(".aboutbtn");
         const contactElem = document.querySelector(".contactbtn");
+        const contactFooter=document.getElementById('contactFooter');
+        const aboutFooter=document.getElementById('aboutFooter');
 
         const home = document.querySelector(".home");
         const about = document.querySelector(".about");
@@ -57,9 +117,11 @@
         contact.classList.add("hide");
         about.classList.add("hide");
 
+       aboutFooter.onclick=aboutSelector;
+       contactFooter.onclick=contactSelector;
 
         function homeSelector() {
-            
+
             about.classList.add("hide");
             contact.classList.add("hide");
             home.classList.remove("hide");
@@ -87,8 +149,19 @@
 
 
     </script>
+    <script>
 
+        function showPassword() {
 
+        const  passwordElem= document.getElementById("password");
+
+            if (passwordElem.type === "password") {
+                passwordElem.type = "text";
+            } else {
+                passwordElem.type = "password";
+            }
+        }
+    </script>
 
 </body>
 
